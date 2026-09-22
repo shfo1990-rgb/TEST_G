@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
@@ -48,7 +48,7 @@
       display: block;
     }
 
-    /* ?곷떒 HUD */
+    /* 상단 HUD */
     #hud {
       position: absolute;
       top: 35px;
@@ -125,7 +125,7 @@
       color: #fff;
     }
 
-    /* ?ㅽ뵾???덈꺼 ?몃뵒耳?댄꽣 */
+    /* 스피드 레벨 인디케이터 */
     #speed-indicator {
       margin-top: 6px;
       font-family: 'Orbitron', monospace;
@@ -135,7 +135,7 @@
       opacity: 0.8;
     }
 
-    /* ?뚮┝ 硫붿떆吏 ?좎뒪??*/
+    /* 알림 메시지 토스트 */
     #toast-msg {
       position: absolute;
       top: 150px;
@@ -156,7 +156,7 @@
       transform: translateY(0);
     }
 
-    /* ?ㅻ쾭?덉씠 怨듯넻 */
+    /* 오버레이 공통 */
     .overlay {
       position: absolute;
       top: 0;
@@ -237,7 +237,7 @@
       50% { opacity: 0.3; }
     }
 
-    /* ?섎떒 踰꾪듉 ?대컮 */
+    /* 하단 버튼 툴바 */
     .bottom-toolbar {
       position: absolute;
       bottom: 30px;
@@ -247,7 +247,7 @@
     }
 
     .icon-btn {
-      padding: 10px 20px;
+      padding: 10px 22px;
       border-radius: 20px;
       background: rgba(255, 255, 255, 0.08);
       border: 1px solid rgba(0, 240, 255, 0.4);
@@ -267,7 +267,7 @@
       box-shadow: 0 0 15px rgba(0, 240, 255, 0.4);
     }
 
-    /* 寃뚯엫 ?ㅻ쾭 ?붾㈃ */
+    /* 게임 오버 화면 */
     .game-over-title {
       font-family: 'Orbitron', monospace;
       font-size: 26px;
@@ -340,7 +340,7 @@
       50% { box-shadow: 0 0 45px rgba(255, 222, 89, 0.9); }
     }
 
-    /* ??궧 紐⑤떖 李?*/
+    /* 랭킹 모달 */
     #leaderboard-modal {
       z-index: 30;
     }
@@ -439,7 +439,7 @@
   <div id="game-container">
     <canvas id="gameCanvas"></canvas>
 
-    <!-- ?곷떒 HUD -->
+    <!-- 상단 HUD -->
     <div id="hud">
       <div id="score-box">
         <span class="hud-label">SCORE</span>
@@ -453,56 +453,56 @@
       <div id="toast-msg">SIZE EXPANDED!</div>
     </div>
 
-    <!-- ?쒖옉 ?붾㈃ -->
+    <!-- 시작 화면 -->
     <div id="start-screen" class="overlay">
       <h1 class="glitch-title">NEON<br><span class="highlight">STACK</span></h1>
       <p class="subtitle">CYBER TOWER 2077</p>
       <div class="tap-guide">
         <div class="pulse-circle"></div>
-        <span>?붾㈃????븯???쒖옉</span>
+        <span>TAP TO START</span>
       </div>
       <div class="bottom-toolbar">
         <button id="open-rank-btn" class="icon-btn">
-          <span>?룇 ??궧 蹂닿린</span>
+          <span>🏆 LEADERBOARD</span>
         </button>
       </div>
     </div>
 
-    <!-- 寃뚯엫 ?ㅻ쾭 ?붾㈃ -->
+    <!-- 게임 오버 화면 -->
     <div id="game-over-screen" class="overlay hidden">
       <h2 class="game-over-title">SYSTEM COLLAPSE</h2>
       <div class="result-box">
         <div class="result-row">
-          <span>理쒖쥌 ?먯닔</span>
+          <span>SCORE</span>
           <span id="final-score" class="result-val">0</span>
         </div>
         <div class="result-row">
-          <span>理쒓퀬 ?먯닔</span>
+          <span>BEST RECORD</span>
           <span id="final-best" class="result-val highlight">0</span>
         </div>
         <div class="result-row">
-          <span>湲濡쒕쾶 ?쒖쐞</span>
+          <span>GLOBAL RANK</span>
           <span id="final-rank" class="result-val" style="color: #ffde59;">#?</span>
         </div>
       </div>
       <button id="reward-ad-btn" class="glow-btn reward">
-        ??蹂댁긽 愿묎퀬 蹂닿퀬 遺??(?ш린 蹂듦뎄)
+        ⚡ REVIVE (RESTORE SIZE)
       </button>
       <button id="restart-btn" class="glow-btn">
-        ?ㅼ떆 ?쒖옉
+        PLAY AGAIN
       </button>
       <button id="game-over-rank-btn" class="glow-btn" style="background: rgba(255,255,255,0.08); border: 1px solid rgba(0,240,255,0.4); box-shadow: none;">
-        ?룇 紐낆삁???꾨떦 (?쒖쐞??
+        🏆 VIEW LEADERBOARD
       </button>
     </div>
 
-    <!-- ??궧 紐⑤떖 -->
+    <!-- 랭킹 모달 -->
     <div id="leaderboard-modal" class="overlay hidden">
       <div class="modal-card">
-        <h3 class="modal-title">?룇 GLOBAL LEADERBOARD</h3>
+        <h3 class="modal-title">🏆 GLOBAL LEADERBOARD</h3>
         <div id="rank-list-box" class="rank-list">
         </div>
-        <button id="close-rank-btn" class="close-modal-btn">?リ린</button>
+        <button id="close-rank-btn" class="close-modal-btn">CLOSE</button>
       </div>
     </div>
   </div>
@@ -740,7 +740,7 @@
 
         ctx.fillStyle = 'hsla(' + hue + ', 95%, ' + (isGlow ? '72%' : '58%') + ', ' + alpha + ')';
         ctx.beginPath();
-        ctx.moveTo(p0.x, p0.y); ctx.lineTo(p1.x, p1.y); ctx.lineTo(p2.x, p2.y); ctx.lineTo(p3.x, p3.y);
+        ctx.moveTo(p0.x, p0.y); ctx.lineTo(p1.x, p1.y); ctx.lineTo(b2.x, b2.y); ctx.lineTo(p3.x, p3.y);
         ctx.closePath(); ctx.fill();
 
         ctx.strokeStyle = 'hsla(' + hue + ', 100%, 85%, ' + alpha + ')';
@@ -966,10 +966,10 @@
 
       rewardAdBtn.addEventListener('click', function(e) {
         e.stopPropagation();
-        rewardAdBtn.innerText = '愿묎퀬 ?쒖껌 以?.. (3珥?';
+        rewardAdBtn.innerText = 'WATCHING AD... (3s)';
         rewardAdBtn.disabled = true;
         setTimeout(function() {
-          rewardAdBtn.innerText = '??蹂댁긽 愿묎퀬 蹂닿퀬 遺??(?ш린 蹂듦뎄)';
+          rewardAdBtn.innerText = '⚡ REVIVE (RESTORE SIZE)';
           rewardAdBtn.disabled = false;
           gameOverScreen.classList.add('hidden');
 
