@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>NEON STACK: CYBER TOWER</title>
+  <title>NEON STACK: CYBER TOWER V2</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@600;700&display=swap" rel="stylesheet">
@@ -17,7 +17,7 @@
     }
 
     body {
-      background: radial-gradient(circle at center, #15092c 0%, #05020c 100%);
+      background: #04020a;
       color: #fff;
       font-family: 'Rajdhani', sans-serif;
       overflow: hidden;
@@ -33,7 +33,7 @@
       height: 100vh;
       max-width: 480px;
       max-height: 960px;
-      background: #090515;
+      background: #05020c;
       box-shadow: 0 0 50px rgba(0, 240, 255, 0.2), 0 0 100px rgba(184, 41, 255, 0.15);
       overflow: hidden;
       cursor: pointer;
@@ -49,7 +49,54 @@
     }
 
     /* 상단 HUD */
-    #hud {
+    #top-bar {
+      position: absolute;
+      top: 25px;
+      left: 20px;
+      right: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      pointer-events: none;
+      z-index: 15;
+    }
+
+    .hud-badge {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      border-radius: 20px;
+      background: rgba(0, 0, 0, 0.5);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(5px);
+      font-family: 'Orbitron', monospace;
+      font-size: 13px;
+      font-weight: 700;
+      color: #ffde59;
+      text-shadow: 0 0 8px rgba(255, 222, 89, 0.6);
+      pointer-events: auto;
+    }
+
+    .sound-btn {
+      cursor: pointer;
+      font-size: 16px;
+      color: #00f0ff;
+      border-color: rgba(0, 240, 255, 0.4);
+      transition: transform 0.1s;
+    }
+
+    .sound-btn:active {
+      transform: scale(0.9);
+    }
+
+    #shield-badge {
+      color: #00f0ff;
+      border-color: rgba(0, 240, 255, 0.4);
+      display: none;
+    }
+
+    #hud-center {
       position: absolute;
       top: 35px;
       left: 0;
@@ -63,7 +110,7 @@
 
     .hud-label {
       font-family: 'Orbitron', monospace;
-      font-size: 13px;
+      font-size: 12px;
       letter-spacing: 4px;
       color: #00f0ff;
       text-shadow: 0 0 10px rgba(0, 240, 255, 0.7);
@@ -81,6 +128,14 @@
 
     #score.pop {
       transform: scale(1.15);
+    }
+
+    #altitude-indicator {
+      font-family: 'Orbitron', monospace;
+      font-size: 11px;
+      letter-spacing: 2px;
+      color: #a0a0c0;
+      margin-top: 4px;
     }
 
     #combo-box {
@@ -125,7 +180,6 @@
       color: #fff;
     }
 
-    /* 스피드 레벨 인디케이터 */
     #speed-indicator {
       margin-top: 6px;
       font-family: 'Orbitron', monospace;
@@ -135,16 +189,16 @@
       opacity: 0.8;
     }
 
-    /* 알림 메시지 토스트 */
+    /* 알림 토스트 */
     #toast-msg {
       position: absolute;
-      top: 150px;
+      top: 155px;
       font-family: 'Orbitron', monospace;
-      font-size: 16px;
+      font-size: 15px;
       font-weight: 900;
       color: #00ffaa;
       text-shadow: 0 0 15px #00ffaa;
-      letter-spacing: 3px;
+      letter-spacing: 2px;
       opacity: 0;
       transform: translateY(10px);
       transition: opacity 0.2s, transform 0.2s;
@@ -167,7 +221,7 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      background: rgba(8, 4, 18, 0.9);
+      background: rgba(6, 3, 14, 0.92);
       backdrop-filter: blur(8px);
       z-index: 20;
       pointer-events: none;
@@ -203,7 +257,7 @@
     }
 
     .tap-guide {
-      margin-top: 50px;
+      margin-top: 45px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -237,28 +291,28 @@
       50% { opacity: 0.3; }
     }
 
-    /* 하단 버튼 툴바 */
+    /* 하단 툴바 */
     .bottom-toolbar {
       position: absolute;
       bottom: 30px;
       display: flex;
-      gap: 15px;
+      gap: 12px;
       pointer-events: auto;
     }
 
     .icon-btn {
-      padding: 10px 22px;
+      padding: 10px 18px;
       border-radius: 20px;
       background: rgba(255, 255, 255, 0.08);
       border: 1px solid rgba(0, 240, 255, 0.4);
       color: #00f0ff;
       font-family: 'Orbitron', monospace;
-      font-size: 13px;
+      font-size: 12px;
       letter-spacing: 2px;
       cursor: pointer;
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 6px;
       transition: background 0.2s, box-shadow 0.2s;
     }
 
@@ -275,7 +329,7 @@
       letter-spacing: 4px;
       color: #ff0055;
       text-shadow: 0 0 25px rgba(255, 0, 85, 0.8);
-      margin-bottom: 20px;
+      margin-bottom: 18px;
     }
 
     .result-box {
@@ -291,8 +345,8 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 8px 0;
-      font-size: 17px;
+      padding: 7px 0;
+      font-size: 16px;
       color: #ccc;
     }
 
@@ -302,19 +356,19 @@
 
     .result-val {
       font-family: 'Orbitron', monospace;
-      font-size: 24px;
+      font-size: 22px;
       font-weight: 900;
       color: #fff;
     }
 
     .glow-btn {
       width: 82%;
-      padding: 15px 20px;
+      padding: 14px 20px;
       margin-top: 10px;
       border-radius: 30px;
       border: none;
       font-family: 'Orbitron', monospace;
-      font-size: 15px;
+      font-size: 14px;
       font-weight: 700;
       letter-spacing: 2px;
       cursor: pointer;
@@ -340,53 +394,49 @@
       50% { box-shadow: 0 0 45px rgba(255, 222, 89, 0.9); }
     }
 
-    /* 랭킹 모달 */
-    #leaderboard-modal {
-      z-index: 30;
-    }
-
+    /* 팝업 모달 공통 */
     .modal-card {
-      width: 86%;
-      max-height: 80vh;
-      background: rgba(14, 8, 28, 0.96);
+      width: 88%;
+      max-height: 85vh;
+      background: rgba(12, 6, 24, 0.97);
       border: 1px solid #00f0ff;
       box-shadow: 0 0 40px rgba(0, 240, 255, 0.35);
       border-radius: 16px;
-      padding: 24px 20px;
+      padding: 22px 18px;
       display: flex;
       flex-direction: column;
       align-items: center;
       pointer-events: auto;
+      overflow-y: auto;
     }
 
     .modal-title {
       font-family: 'Orbitron', monospace;
-      font-size: 20px;
+      font-size: 19px;
       font-weight: 900;
       letter-spacing: 3px;
       color: #00f0ff;
       text-shadow: 0 0 15px #00f0ff;
-      margin-bottom: 18px;
+      margin-bottom: 15px;
     }
 
     .rank-list {
       width: 100%;
       display: flex;
       flex-direction: column;
-      gap: 8px;
-      margin-bottom: 20px;
-      overflow-y: auto;
+      gap: 7px;
+      margin-bottom: 18px;
     }
 
     .rank-item {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 10px 14px;
+      padding: 9px 12px;
       border-radius: 8px;
       background: rgba(255, 255, 255, 0.04);
       border: 1px solid rgba(255, 255, 255, 0.06);
-      font-size: 15px;
+      font-size: 14px;
     }
 
     .rank-item.top-1 {
@@ -401,24 +451,60 @@
       box-shadow: 0 0 15px rgba(0, 240, 255, 0.3);
     }
 
-    .rank-num {
-      font-family: 'Orbitron', monospace;
-      font-weight: 900;
-      width: 32px;
+    .rank-num { font-family: 'Orbitron', monospace; font-weight: 900; width: 30px; }
+    .rank-name { flex: 1; font-family: 'Orbitron', monospace; text-align: left; padding-left: 5px; }
+    .rank-score { font-family: 'Orbitron', monospace; font-weight: 900; font-size: 16px; }
+
+    /* 상점 테마 아이템 그리드 */
+    .shop-grid {
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 18px;
     }
 
-    .rank-name {
-      flex: 1;
-      font-family: 'Orbitron', monospace;
-      letter-spacing: 1px;
-      text-align: left;
-      padding-left: 5px;
+    .shop-item {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 12px;
+      padding: 12px 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+      transition: border-color 0.2s, transform 0.1s;
     }
 
-    .rank-score {
+    .shop-item.equipped {
+      border-color: #00f0ff;
+      background: rgba(0, 240, 255, 0.15);
+      box-shadow: 0 0 15px rgba(0, 240, 255, 0.4);
+    }
+
+    .theme-preview {
+      width: 45px;
+      height: 25px;
+      border-radius: 6px;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+    }
+
+    .shop-item-name {
       font-family: 'Orbitron', monospace;
-      font-weight: 900;
-      font-size: 17px;
+      font-size: 12px;
+      font-weight: 700;
+      text-align: center;
+    }
+
+    .shop-item-btn {
+      font-family: 'Orbitron', monospace;
+      font-size: 11px;
+      padding: 4px 10px;
+      border-radius: 12px;
+      border: none;
+      font-weight: 700;
+      cursor: pointer;
     }
 
     .close-modal-btn {
@@ -429,7 +515,7 @@
       background: rgba(255, 255, 255, 0.08);
       color: #fff;
       font-family: 'Orbitron', monospace;
-      font-size: 14px;
+      font-size: 13px;
       letter-spacing: 2px;
       cursor: pointer;
     }
@@ -439,18 +525,34 @@
   <div id="game-container">
     <canvas id="gameCanvas"></canvas>
 
-    <!-- 상단 HUD -->
-    <div id="hud">
+    <!-- 상단 툴바 (코인, 쉴드, 사운드 토글) -->
+    <div id="top-bar">
+      <div id="coin-badge" class="hud-badge">
+        <span>🪙</span>
+        <span id="coin-count">0</span>
+      </div>
+      <div id="shield-badge" class="hud-badge">
+        <span>🛡️</span>
+        <span id="shield-count">1</span>
+      </div>
+      <div id="sound-btn" class="hud-badge sound-btn">
+        <span id="sound-icon">🔊</span>
+      </div>
+    </div>
+
+    <!-- 중앙 HUD -->
+    <div id="hud-center">
       <div id="score-box">
         <span class="hud-label">SCORE</span>
         <span id="score">0</span>
       </div>
+      <div id="altitude-indicator">ALTITUDE: GROUND CITY</div>
       <div id="combo-box" style="display: none;">
         <span id="combo-text">PERFECT!</span>
         <span id="combo-count">x1</span>
       </div>
       <div id="speed-indicator">SPEED: 1.0x</div>
-      <div id="toast-msg">SIZE EXPANDED!</div>
+      <div id="toast-msg">SIZE RECOVERED!</div>
     </div>
 
     <!-- 시작 화면 -->
@@ -463,7 +565,10 @@
       </div>
       <div class="bottom-toolbar">
         <button id="open-rank-btn" class="icon-btn">
-          <span>🏆 LEADERBOARD</span>
+          <span>🏆 RANKING</span>
+        </button>
+        <button id="open-shop-btn" class="icon-btn">
+          <span>🛒 THEME SHOP</span>
         </button>
       </div>
     </div>
@@ -481,18 +586,22 @@
           <span id="final-best" class="result-val highlight">0</span>
         </div>
         <div class="result-row">
+          <span>COINS EARNED</span>
+          <span id="final-coins" class="result-val" style="color: #ffde59;">+0</span>
+        </div>
+        <div class="result-row">
           <span>GLOBAL RANK</span>
-          <span id="final-rank" class="result-val" style="color: #ffde59;">#?</span>
+          <span id="final-rank" class="result-val" style="color: #00f0ff;">#?</span>
         </div>
       </div>
       <button id="reward-ad-btn" class="glow-btn reward">
-        ⚡ REVIVE (RESTORE SIZE)
+        ⚡ REVIVE (RESTORE SIZE + SHIELD)
       </button>
       <button id="restart-btn" class="glow-btn">
         PLAY AGAIN
       </button>
       <button id="game-over-rank-btn" class="glow-btn" style="background: rgba(255,255,255,0.08); border: 1px solid rgba(0,240,255,0.4); box-shadow: none;">
-        🏆 VIEW LEADERBOARD
+        🏆 LEADERBOARD
       </button>
     </div>
 
@@ -500,22 +609,37 @@
     <div id="leaderboard-modal" class="overlay hidden">
       <div class="modal-card">
         <h3 class="modal-title">🏆 GLOBAL LEADERBOARD</h3>
-        <div id="rank-list-box" class="rank-list">
-        </div>
+        <div id="rank-list-box" class="rank-list"></div>
         <button id="close-rank-btn" class="close-modal-btn">CLOSE</button>
+      </div>
+    </div>
+
+    <!-- 테마 상점 모달 -->
+    <div id="shop-modal" class="overlay hidden">
+      <div class="modal-card">
+        <h3 class="modal-title">🛒 CYBER THEME SHOP</h3>
+        <div id="shop-grid-box" class="shop-grid"></div>
+        <button id="close-shop-btn" class="close-modal-btn">CLOSE</button>
       </div>
     </div>
   </div>
 
   <script>
     (function() {
+      // 1. 게임 상태
       const STATE = { READY: 0, PLAYING: 1, GAMEOVER: 2 };
       let state = STATE.READY;
 
+      // 2. DOM 요소
       const container = document.getElementById('game-container');
       const canvas = document.getElementById('gameCanvas');
       const ctx = canvas.getContext('2d');
       const scoreEl = document.getElementById('score');
+      const coinCountEl = document.getElementById('coin-count');
+      const shieldBadge = document.getElementById('shield-badge');
+      const soundBtn = document.getElementById('sound-btn');
+      const soundIcon = document.getElementById('sound-icon');
+      const altitudeIndicatorEl = document.getElementById('altitude-indicator');
       const comboBox = document.getElementById('combo-box');
       const comboTextEl = document.getElementById('combo-text');
       const comboCountEl = document.getElementById('combo-count');
@@ -525,6 +649,7 @@
       const gameOverScreen = document.getElementById('game-over-screen');
       const finalScoreEl = document.getElementById('final-score');
       const finalBestEl = document.getElementById('final-best');
+      const finalCoinsEl = document.getElementById('final-coins');
       const finalRankEl = document.getElementById('final-rank');
       const restartBtn = document.getElementById('restart-btn');
       const rewardAdBtn = document.getElementById('reward-ad-btn');
@@ -533,7 +658,37 @@
       const openRankBtn = document.getElementById('open-rank-btn');
       const gameOverRankBtn = document.getElementById('game-over-rank-btn');
       const closeRankBtn = document.getElementById('close-rank-btn');
+      const shopModal = document.getElementById('shop-modal');
+      const shopGridBox = document.getElementById('shop-grid-box');
+      const openShopBtn = document.getElementById('open-shop-btn');
+      const closeShopBtn = document.getElementById('close-shop-btn');
 
+      // 3. 테마 정의 (4대 테마)
+      const THEMES = {
+        cyber: { id: 'cyber', name: 'CYBER NEON', price: 0, preview: 'linear-gradient(135deg, #00f0ff, #ff0080)', baseHue: 190, bgCity: '#070313' },
+        synth: { id: 'synth', name: '80s SYNTH', price: 60, preview: 'linear-gradient(135deg, #ff0077, #ff9900)', baseHue: 330, bgCity: '#14051a' },
+        emerald: { id: 'emerald', name: 'EMERALD MATRIX', price: 150, preview: 'linear-gradient(135deg, #00ffaa, #0088ff)', baseHue: 150, bgCity: '#02120e' },
+        gold: { id: 'gold', name: 'OBSIDIAN GOLD', price: 300, preview: 'linear-gradient(135deg, #ffde59, #333333)', baseHue: 48, bgCity: '#0a0802' }
+      };
+
+      let currentTheme = 'cyber';
+      let unlockedThemes = ['cyber'];
+      let totalCoins = 0;
+      let roundCoinsEarned = 0;
+
+      // 로컬 데이터 로드
+      try {
+        const storedCoins = localStorage.getItem('neon_coins');
+        if (storedCoins) totalCoins = parseInt(storedCoins, 10);
+        const storedThemes = localStorage.getItem('neon_unlocked_themes');
+        if (storedThemes) unlockedThemes = JSON.parse(storedThemes);
+        const storedCurTheme = localStorage.getItem('neon_current_theme');
+        if (storedCurTheme && THEMES[storedCurTheme]) currentTheme = storedCurTheme;
+      } catch(e) {}
+
+      coinCountEl.innerText = totalCoins;
+
+      // 4. 게임 상수
       const BLOCK_HEIGHT = 28;
       const INITIAL_SIZE = 220;
       const PERFECT_TOLERANCE = 6;
@@ -544,90 +699,107 @@
       try { bestScore = parseInt(localStorage.getItem('neon_best') || '0', 10); } catch(e) {}
 
       let combo = 0;
-      let colorHue = 190;
+      let colorHue = THEMES[currentTheme].baseHue;
       let stack = [];
       let fallingPieces = [];
       let particles = [];
+      let coinsOnTower = []; // 블록 위에 놓인 3D 코인들
       let currentBlock = null;
+      let currentCoin = null; // 현재 이동 중인 블록 위 코인
       let cameraY = 0;
       let targetCameraY = 0;
       let viewWidth = 360;
       let viewHeight = 640;
+      let hasShield = false;
 
       let shakeIntensity = 0;
       let shakeOffsetX = 0;
       let shakeOffsetY = 0;
 
-      const DEFAULT_RIVAL_RANKS = [
-        { name: 'CYBER_NEXUS', score: 88 },
-        { name: 'NEON_GHOST', score: 65 },
-        { name: 'SYNTH_WAVE', score: 47 },
-        { name: 'BLADE_RUNNER', score: 32 },
-        { name: 'PILOT_01', score: 18 }
-      ];
-
-      function getLeaderboard() {
-        let board = [];
-        try {
-          const stored = localStorage.getItem('neon_ranks');
-          if (stored) board = JSON.parse(stored);
-        } catch(e) {}
-
-        if (!board || board.length === 0) {
-          board = [...DEFAULT_RIVAL_RANKS];
-        }
-
-        const myExisting = board.find(r => r.isMe);
-        if (myExisting) {
-          myExisting.score = Math.max(myExisting.score, bestScore);
-        } else if (bestScore > 0) {
-          board.push({ name: 'YOU (PILOT)', score: bestScore, isMe: true });
-        }
-
-        board.sort((a, b) => b.score - a.score);
-        return board.slice(0, 8);
+      // 5. 배경 패럴랙스 요소 (별무리 & 빌딩)
+      const stars = [];
+      for (let i = 0; i < 60; i++) {
+        stars.push({ x: Math.random(), y: Math.random(), size: Math.random() * 2 + 0.8, alpha: Math.random() });
       }
 
-      function updateLeaderboardUI() {
-        const board = getLeaderboard();
-        rankListBox.innerHTML = '';
-
-        board.forEach((item, idx) => {
-          const row = document.createElement('div');
-          row.className = 'rank-item' + (idx === 0 ? ' top-1' : '') + (item.isMe ? ' my-rank' : '');
-          row.innerHTML = `
-            <span class="rank-num">#${idx + 1}</span>
-            <span class="rank-name">${item.name}</span>
-            <span class="rank-score">${item.score}</span>
-          `;
-          rankListBox.appendChild(row);
+      const buildings = [];
+      for (let i = 0; i < 14; i++) {
+        buildings.push({
+          x: i * 38 - 50,
+          width: 32 + Math.random() * 20,
+          height: 90 + Math.random() * 140,
+          hue: 180 + Math.random() * 80
         });
       }
 
-      function calculatePlayerRank(currentScore) {
-        const board = getLeaderboard();
-        let rank = board.length + 1;
-        for (let i = 0; i < board.length; i++) {
-          if (currentScore >= board[i].score) {
-            rank = i + 1;
-            break;
-          }
+      // 6. 신스웨이브 BGM & 사운드 엔진 (Web Audio API)
+      let audioCtx = null;
+      let isMuted = false;
+      let bgmInterval = null;
+      let bgmStep = 0;
+      const bgmNotes = [110, 110, 130.81, 110, 146.83, 110, 164.81, 130.81]; // 80s 베이스라인 (A, C, D, E)
+
+      function initAudio() {
+        if (!audioCtx) {
+          const AC = window.AudioContext || window.webkitAudioContext;
+          if (AC) audioCtx = new AC();
         }
-        return rank;
+        if (audioCtx && audioCtx.state === 'suspended') {
+          audioCtx.resume();
+        }
       }
 
-      let audioCtx = null;
+      function startBgm() {
+        if (bgmInterval || isMuted) return;
+        initAudio();
+        bgmStep = 0;
+        bgmInterval = setInterval(playBgmBeat, 240); // 약 125 BPM
+      }
+
+      function stopBgm() {
+        if (bgmInterval) {
+          clearInterval(bgmInterval);
+          bgmInterval = null;
+        }
+      }
+
+      function playBgmBeat() {
+        if (isMuted || !audioCtx || state === STATE.GAMEOVER) return;
+        try {
+          const now = audioCtx.currentTime;
+          const osc = audioCtx.createOscillator();
+          const gain = audioCtx.createGain();
+          const filter = audioCtx.createBiquadFilter();
+
+          const freq = bgmNotes[bgmStep % bgmNotes.length];
+          bgmStep++;
+
+          osc.type = 'sawtooth';
+          osc.frequency.setValueAtTime(freq, now);
+
+          filter.type = 'lowpass';
+          filter.frequency.setValueAtTime(600 + (bgmStep % 4) * 200, now);
+
+          gain.gain.setValueAtTime(0.08, now);
+          gain.gain.exponentialRampToValueAtTime(0.001, now + 0.2);
+
+          osc.connect(filter);
+          filter.connect(gain);
+          gain.connect(audioCtx.destination);
+
+          osc.start(now);
+          osc.stop(now + 0.2);
+        } catch(e) {}
+      }
+
       const noteFreqs = [261.63, 293.66, 329.63, 349.23, 392.00, 440.00, 493.88, 523.25, 587.33, 659.25, 783.99, 880.00, 1046.50];
 
       function playSound(type, comboCount = 0) {
-        try {
-          if (!audioCtx) {
-            const AC = window.AudioContext || window.webkitAudioContext;
-            if (AC) audioCtx = new AC();
-          }
-          if (audioCtx && audioCtx.state === 'suspended') audioCtx.resume();
-          if (!audioCtx) return;
+        if (isMuted) return;
+        initAudio();
+        if (!audioCtx) return;
 
+        try {
           const now = audioCtx.currentTime;
           const osc = audioCtx.createOscillator();
           const gain = audioCtx.createGain();
@@ -649,6 +821,31 @@
             gain.gain.exponentialRampToValueAtTime(0.001, now + 0.35);
             osc.connect(gain); gain.connect(audioCtx.destination);
             osc.start(now); osc.stop(now + 0.35);
+          } else if (type === 'coin') {
+            // 코인 챠링 사운드
+            osc.type = 'sine';
+            osc.frequency.setValueAtTime(987.77, now);
+            osc.frequency.setValueAtTime(1318.51, now + 0.08);
+            gain.gain.setValueAtTime(0.28, now);
+            gain.gain.exponentialRampToValueAtTime(0.001, now + 0.3);
+            osc.connect(gain); gain.connect(audioCtx.destination);
+            osc.start(now); osc.stop(now + 0.3);
+          } else if (type === 'shield_get') {
+            osc.type = 'sine';
+            osc.frequency.setValueAtTime(440, now);
+            osc.frequency.exponentialRampToValueAtTime(880, now + 0.25);
+            gain.gain.setValueAtTime(0.3, now);
+            gain.gain.exponentialRampToValueAtTime(0.001, now + 0.3);
+            osc.connect(gain); gain.connect(audioCtx.destination);
+            osc.start(now); osc.stop(now + 0.3);
+          } else if (type === 'shield_break') {
+            osc.type = 'sawtooth';
+            osc.frequency.setValueAtTime(300, now);
+            osc.frequency.linearRampToValueAtTime(150, now + 0.2);
+            gain.gain.setValueAtTime(0.35, now);
+            gain.gain.exponentialRampToValueAtTime(0.001, now + 0.25);
+            osc.connect(gain); gain.connect(audioCtx.destination);
+            osc.start(now); osc.stop(now + 0.25);
           } else if (type === 'recover') {
             osc.type = 'triangle';
             osc.frequency.setValueAtTime(523.25, now);
@@ -675,6 +872,16 @@
         }
       }
 
+      // 사운드 토글
+      soundBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        isMuted = !isMuted;
+        soundIcon.innerText = isMuted ? '🔇' : '🔊';
+        if (isMuted) stopBgm();
+        else if (state === STATE.PLAYING) startBgm();
+      });
+
+      // 7. 리사이즈
       function resize() {
         const rect = container.getBoundingClientRect();
         const dpr = window.devicePixelRatio || 1;
@@ -688,6 +895,7 @@
       window.addEventListener('resize', resize);
       resize();
 
+      // 8. 3D 투영
       function project(x, y, z) {
         const originX = viewWidth / 2 + shakeOffsetX;
         const originY = viewHeight * 0.68 + cameraY + shakeOffsetY;
@@ -696,6 +904,7 @@
         return { x: isoX, y: isoY };
       }
 
+      // 9. 파티클 생성
       function createParticles(x, y, z, width, depth, hue, count = 35) {
         for (let i = 0; i < count; i++) {
           const angle = Math.random() * Math.PI * 2;
@@ -715,7 +924,28 @@
         }
       }
 
-      function drawBlock(x, y, z, width, depth, height, hue, alpha = 1.0, isGlow = false) {
+      // 코인 획득 스파크 파티클
+      function createCoinSparks(x, y, z) {
+        for (let i = 0; i < 20; i++) {
+          const angle = Math.random() * Math.PI * 2;
+          const speed = 3.0 + Math.random() * 4.0;
+          particles.push({
+            x: x, y: y + 20, z: z,
+            vx: Math.cos(angle) * speed,
+            vy: 4.0 + Math.random() * 4.0,
+            vz: Math.sin(angle) * speed,
+            size: 3.0,
+            hue: 50, // 황금색
+            alpha: 1.0,
+            life: 0.94
+          });
+        }
+      }
+
+      // 10. 3D 블록 그리기 (특수 블록 및 쉴드 효과 포함)
+      function drawBlock(block, alpha = 1.0, isGlow = false) {
+        const { x, y, z, width, depth, hue, special } = block;
+        const height = BLOCK_HEIGHT;
         const hw = width / 2;
         const hd = depth / 2;
 
@@ -728,40 +958,162 @@
         const b2 = project(x + hw, y, z + hd);
         const b3 = project(x - hw, y, z + hd);
 
+        // 앞 왼쪽 면
         ctx.fillStyle = 'hsla(' + hue + ', 85%, 35%, ' + alpha + ')';
         ctx.beginPath();
         ctx.moveTo(p3.x, p3.y); ctx.lineTo(p2.x, p2.y); ctx.lineTo(b2.x, b2.y); ctx.lineTo(b3.x, b3.y);
         ctx.closePath(); ctx.fill();
 
+        // 앞 오른쪽 면
         ctx.fillStyle = 'hsla(' + hue + ', 85%, 22%, ' + alpha + ')';
         ctx.beginPath();
         ctx.moveTo(p2.x, p2.y); ctx.lineTo(p1.x, p1.y); ctx.lineTo(b1.x, b1.y); ctx.lineTo(b2.x, b2.y);
         ctx.closePath(); ctx.fill();
 
-        ctx.fillStyle = 'hsla(' + hue + ', 95%, ' + (isGlow ? '72%' : '58%') + ', ' + alpha + ')';
+        // 윗면 (특수 블록에 따라 색상 변형)
+        let topLight = isGlow ? '72%' : '58%';
+        if (special === 'shield') topLight = '68%';
+        if (special === 'diamond') topLight = '80%';
+
+        ctx.fillStyle = 'hsla(' + hue + ', 95%, ' + topLight + ', ' + alpha + ')';
         ctx.beginPath();
-        ctx.moveTo(p0.x, p0.y); ctx.lineTo(p1.x, p1.y); ctx.lineTo(b2.x, b2.y); ctx.lineTo(p3.x, p3.y);
+        ctx.moveTo(p0.x, p0.y); ctx.lineTo(p1.x, p1.y); ctx.lineTo(p2.x, p2.y); ctx.lineTo(p3.x, p3.y);
         ctx.closePath(); ctx.fill();
 
+        // 외곽선
         ctx.strokeStyle = 'hsla(' + hue + ', 100%, 85%, ' + alpha + ')';
         ctx.lineWidth = isGlow ? 2.5 : 1.5;
         ctx.stroke();
+
+        // 특수 블록 윗면 마크
+        if (special === 'shield') {
+          const center = project(x, y + height, z);
+          ctx.fillStyle = '#00f0ff';
+          ctx.font = '16px Orbitron';
+          ctx.textAlign = 'center';
+          ctx.textBaseline = 'middle';
+          ctx.fillText('🛡️', center.x, center.y);
+        } else if (special === 'diamond') {
+          const center = project(x, y + height, z);
+          ctx.fillStyle = '#ffde59';
+          ctx.font = '16px Orbitron';
+          ctx.textAlign = 'center';
+          ctx.textBaseline = 'middle';
+          ctx.fillText('💎', center.x, center.y);
+        }
       }
 
+      // 11. 3D 회전 코인 그리기
+      let coinRot = 0;
+      function drawCoin(coin) {
+        const center = project(coin.x, coin.y + BLOCK_HEIGHT + 14, coin.z);
+        const scaleX = Math.cos(coinRot); // 회전 애니메이션
+        ctx.save();
+        ctx.translate(center.x, center.y);
+        ctx.scale(scaleX, 1);
+
+        ctx.beginPath();
+        ctx.arc(0, 0, 10, 0, Math.PI * 2);
+        ctx.fillStyle = '#ffde59';
+        ctx.shadowColor = '#ffde59';
+        ctx.shadowBlur = 12;
+        ctx.fill();
+
+        ctx.strokeStyle = '#fff';
+        ctx.lineWidth = 2;
+        ctx.stroke();
+
+        ctx.restore();
+      }
+
+      // 12. 고도별 동적 배경 그리기 (Parallax Atmosphere)
+      function drawParallaxBackground() {
+        const currentAltitude = stack.length;
+        let bgGrad;
+
+        // 고도에 따른 3단계 배경 그라디언트
+        if (currentAltitude <= 20) {
+          // 1단계: 지상 사이버 도시
+          altitudeIndicatorEl.innerText = 'ALTITUDE: GROUND CITY (' + currentAltitude + 'F)';
+          bgGrad = ctx.createLinearGradient(0, 0, 0, viewHeight);
+          bgGrad.addColorStop(0, '#060312');
+          bgGrad.addColorStop(1, THEMES[currentTheme].bgCity);
+        } else if (currentAltitude <= 45) {
+          // 2단계: 사이버 상공 & 구름
+          altitudeIndicatorEl.innerText = 'ALTITUDE: STRATOSPHERE (' + currentAltitude + 'F)';
+          bgGrad = ctx.createLinearGradient(0, 0, 0, viewHeight);
+          bgGrad.addColorStop(0, '#1a062b');
+          bgGrad.addColorStop(1, '#080214');
+        } else {
+          // 3단계: 우주 공간
+          altitudeIndicatorEl.innerText = 'ALTITUDE: DEEP SPACE (' + currentAltitude + 'F)';
+          bgGrad = ctx.createLinearGradient(0, 0, 0, viewHeight);
+          bgGrad.addColorStop(0, '#020108');
+          bgGrad.addColorStop(0.6, '#0f0524');
+          bgGrad.addColorStop(1, '#000000');
+        }
+
+        ctx.fillStyle = bgGrad;
+        ctx.fillRect(0, 0, viewWidth, viewHeight);
+
+        // 1) 원경 빌딩 숲 (0~30층에서만 보임)
+        if (currentAltitude <= 32) {
+          const cityAlpha = Math.max(0, 1.0 - (currentAltitude / 32));
+          const cityOffsetY = cameraY * 0.25; // 패럴랙스 천천히 이동
+          for (let i = 0; i < buildings.length; i++) {
+            const b = buildings[i];
+            const by = viewHeight - b.height + cityOffsetY;
+            ctx.fillStyle = `hsla(${b.hue}, 60%, 15%, ${cityAlpha * 0.8})`;
+            ctx.fillRect(b.x, by, b.width, b.height);
+            // 빌딩 네온 창문 점들
+            ctx.fillStyle = `hsla(${b.hue}, 90%, 65%, ${cityAlpha * 0.6})`;
+            for (let wy = by + 10; wy < by + b.height - 10; wy += 20) {
+              ctx.fillRect(b.x + 6, wy, 4, 6);
+              ctx.fillRect(b.x + b.width - 10, wy, 4, 6);
+            }
+          }
+        }
+
+        // 2) 별무리 (고도가 높아질수록 더 선명하게 반짝임)
+        const starAlphaBoost = Math.min(1.0, currentAltitude / 25);
+        for (let i = 0; i < stars.length; i++) {
+          const s = stars[i];
+          const sy = (s.y * viewHeight + cameraY * 0.15) % viewHeight;
+          const sx = s.x * viewWidth;
+          const blink = Math.sin(Date.now() * 0.003 + i) * 0.3 + 0.7;
+          ctx.fillStyle = `rgba(255, 255, 255, ${s.alpha * blink * (0.3 + starAlphaBoost * 0.7)})`;
+          ctx.beginPath();
+          ctx.arc(sx, sy, s.size, 0, Math.PI * 2);
+          ctx.fill();
+        }
+      }
+
+      // 13. 가속 곡선
       function calculateSpeed(currentScore, comboCount) {
         const baseSpeed = 3.2;
-        const accel = Math.min(currentScore * 0.12, 5.8);
+        const accel = Math.min(currentScore * 0.11, 5.5);
         const feverBonus = (comboCount >= 3) ? 0.5 : 0;
         return baseSpeed + accel + feverBonus;
       }
 
+      // 14. 새 블록 스폰 (특수 블록 & 코인 생성)
       function spawnBlock() {
         const top = stack[stack.length - 1];
         const isEven = stack.length % 2 === 0;
         colorHue = (colorHue + 11) % 360;
 
         const axis = isEven ? 'z' : 'x';
-        const speed = calculateSpeed(score, combo);
+        let speed = calculateSpeed(score, combo);
+
+        // 특수 블록 판정 (약 20% 확률)
+        let special = null;
+        const rand = Math.random();
+        if (score >= 5 && rand < 0.12 && !hasShield) {
+          special = 'shield';
+        } else if (score >= 8 && rand >= 0.12 && rand < 0.24) {
+          special = 'diamond';
+          speed *= 1.25; // 다이아몬드는 약간 더 빠름
+        }
 
         const speedMultiplier = (speed / 3.2).toFixed(1);
         speedIndicatorEl.innerText = 'SPEED: ' + speedMultiplier + 'x';
@@ -775,24 +1127,42 @@
           axis: axis,
           dir: 1,
           speed: speed,
-          hue: colorHue
+          hue: colorHue,
+          special: special
         };
 
         if (axis === 'x') currentBlock.x = -270;
         else currentBlock.z = -270;
+
+        // 코인 스폰 판정 (일반 블록이고 35% 확률)
+        if (!special && Math.random() < 0.38) {
+          currentCoin = {
+            x: currentBlock.x,
+            y: currentBlock.y,
+            z: currentBlock.z
+          };
+        } else {
+          currentCoin = null;
+        }
 
         if (stack.length > 5) {
           targetCameraY = (stack.length - 5) * BLOCK_HEIGHT;
         }
       }
 
+      // 15. 리셋
       function resetGame() {
         score = 0;
         combo = 0;
-        colorHue = Math.floor(Math.random() * 360);
+        roundCoinsEarned = 0;
+        hasShield = false;
+        shieldBadge.style.display = 'none';
+
+        colorHue = THEMES[currentTheme].baseHue;
         stack = [];
         fallingPieces = [];
         particles = [];
+        coinsOnTower = [];
         cameraY = 0;
         targetCameraY = 0;
         shakeIntensity = 0;
@@ -806,27 +1176,35 @@
           width: INITIAL_SIZE,
           depth: INITIAL_SIZE,
           y: 0,
-          hue: colorHue
+          hue: colorHue,
+          special: null
         });
 
         spawnBlock();
       }
 
+      // 16. 게임 오버
       function triggerGameOver() {
         state = STATE.GAMEOVER;
+        stopBgm();
         playSound('gameover');
         triggerHaptic(80);
         shakeIntensity = 18;
+
+        // 코인 적립
+        totalCoins += roundCoinsEarned;
+        coinCountEl.innerText = totalCoins;
+        try { localStorage.setItem('neon_coins', totalCoins.toString()); } catch(e) {}
 
         if (score > bestScore) {
           bestScore = score;
           try { localStorage.setItem('neon_best', bestScore.toString()); } catch(e) {}
         }
 
-        const myRank = calculatePlayerRank(score);
         finalScoreEl.innerText = score;
         finalBestEl.innerText = bestScore;
-        finalRankEl.innerText = '#' + myRank;
+        finalCoinsEl.innerText = '+' + roundCoinsEarned;
+        finalRankEl.innerText = '#' + calculatePlayerRank(score);
 
         const board = getLeaderboard();
         try { localStorage.setItem('neon_ranks', JSON.stringify(board)); } catch(e) {}
@@ -842,12 +1220,14 @@
         setTimeout(function() { toastEl.classList.remove('show'); }, 1200);
       }
 
+      // 17. 탭 액션 (슬라이스, 쉴드, 코인 획득 로직)
       function handleAction() {
-        if (!leaderboardModal.classList.contains('hidden')) return;
+        if (!leaderboardModal.classList.contains('hidden') || !shopModal.classList.contains('hidden')) return;
 
         if (state === STATE.READY) {
           state = STATE.PLAYING;
           startScreen.classList.add('hidden');
+          startBgm();
           playSound('hit');
           triggerHaptic(20);
           return;
@@ -862,19 +1242,42 @@
           const sizeProp = axis === 'x' ? 'width' : 'depth';
           const origSize = prev[sizeProp];
 
+          // 1) 퍼펙트 스냅
           if (absDelta <= PERFECT_TOLERANCE) {
             cur[axis] = prev[axis];
             combo++;
             shakeIntensity = 5;
             triggerHaptic(30);
 
-            if (combo % RECOVER_COMBO === 0 && cur[sizeProp] < INITIAL_SIZE) {
+            // 특수 블록 보상 처리
+            if (cur.special === 'shield') {
+              hasShield = true;
+              shieldBadge.style.display = 'flex';
+              playSound('shield_get');
+              showToast('SHIELD ACTIVATED! 🛡️');
+            } else if (cur.special === 'diamond') {
+              roundCoinsEarned += 5;
+              score += 3;
+              coinCountEl.innerText = totalCoins + roundCoinsEarned;
+              playSound('coin');
+              showToast('DIAMOND BONUS! +5 COINS');
+              createCoinSparks(cur.x, cur.y, cur.z);
+            } else if (combo % RECOVER_COMBO === 0 && cur[sizeProp] < INITIAL_SIZE) {
               const expand = Math.min(25, INITIAL_SIZE - cur[sizeProp]);
               cur[sizeProp] += expand;
               showToast('SIZE RECOVERED! +' + expand + 'px');
               playSound('recover');
             } else {
               playSound('perfect', combo);
+            }
+
+            // 코인 흡수
+            if (currentCoin) {
+              roundCoinsEarned += 1;
+              coinCountEl.innerText = totalCoins + roundCoinsEarned;
+              playSound('coin');
+              createCoinSparks(cur.x, cur.y, cur.z);
+              currentCoin = null;
             }
 
             createParticles(cur.x, cur.y, cur.z, cur.width, cur.depth, cur.hue, 40);
@@ -903,6 +1306,25 @@
             return;
           }
 
+          // 2) 빗나감 또는 슬라이스 시 쉴드 방어 체크
+          if (hasShield) {
+            hasShield = false;
+            shieldBadge.style.display = 'none';
+            playSound('shield_break');
+            showToast('SHIELD SAVED YOU! 🛡️💥');
+            shakeIntensity = 10;
+            triggerHaptic(50);
+
+            // 쉴드로 인해 현재 크기 그대로 스냅 안착!
+            cur[axis] = prev[axis];
+            stack.push(cur);
+            score++;
+            scoreEl.innerText = score;
+            spawnBlock();
+            return;
+          }
+
+          // 3) 완전 탈락
           if (absDelta >= origSize) {
             fallingPieces.push({
               x: cur.x, z: cur.z, y: cur.y,
@@ -914,6 +1336,7 @@
             return;
           }
 
+          // 4) 일반 슬라이스 자르기
           combo = 0;
           comboBox.style.display = 'none';
           comboBox.classList.remove('fever');
@@ -946,13 +1369,118 @@
         }
       }
 
+      // 18. 상점 UI 렌더링 및 아이템 구매
+      function updateShopUI() {
+        shopGridBox.innerHTML = '';
+        Object.keys(THEMES).forEach(key => {
+          const th = THEMES[key];
+          const isUnlocked = unlockedThemes.includes(key);
+          const isEquipped = (currentTheme === key);
+
+          const itemDiv = document.createElement('div');
+          itemDiv.className = 'shop-item' + (isEquipped ? ' equipped' : '');
+          itemDiv.innerHTML = `
+            <div class="theme-preview" style="background: ${th.preview}"></div>
+            <div class="shop-item-name">${th.name}</div>
+            <button class="shop-item-btn" style="${isEquipped ? 'background:#00f0ff;color:#000;' : isUnlocked ? 'background:#555;color:#fff;' : 'background:#ffde59;color:#000;'}">
+              ${isEquipped ? 'EQUIPPED' : isUnlocked ? 'EQUIP' : '🪙 ' + th.price}
+            </button>
+          `;
+
+          itemDiv.querySelector('button').addEventListener('click', (e) => {
+            e.stopPropagation();
+            if (isEquipped) return;
+
+            if (isUnlocked) {
+              currentTheme = key;
+              try { localStorage.setItem('neon_current_theme', currentTheme); } catch(e) {}
+              colorHue = THEMES[currentTheme].baseHue;
+              showToast(th.name + ' EQUIPPED!');
+              updateShopUI();
+            } else if (totalCoins >= th.price) {
+              totalCoins -= th.price;
+              coinCountEl.innerText = totalCoins;
+              unlockedThemes.push(key);
+              currentTheme = key;
+              try {
+                localStorage.setItem('neon_coins', totalCoins.toString());
+                localStorage.setItem('neon_unlocked_themes', JSON.stringify(unlockedThemes));
+                localStorage.setItem('neon_current_theme', currentTheme);
+              } catch(e) {}
+              colorHue = THEMES[currentTheme].baseHue;
+              playSound('coin');
+              showToast(th.name + ' UNLOCKED!');
+              updateShopUI();
+            } else {
+              showToast('NOT ENOUGH COINS!');
+            }
+          });
+
+          shopGridBox.appendChild(itemDiv);
+        });
+      }
+
+      // 19. 리더보드 계산
+      const DEFAULT_RIVAL_RANKS = [
+        { name: 'CYBER_NEXUS', score: 88 },
+        { name: 'NEON_GHOST', score: 65 },
+        { name: 'SYNTH_WAVE', score: 47 },
+        { name: 'BLADE_RUNNER', score: 32 },
+        { name: 'PILOT_01', score: 18 }
+      ];
+
+      function getLeaderboard() {
+        let board = [];
+        try {
+          const stored = localStorage.getItem('neon_ranks');
+          if (stored) board = JSON.parse(stored);
+        } catch(e) {}
+
+        if (!board || board.length === 0) board = [...DEFAULT_RIVAL_RANKS];
+
+        const myExisting = board.find(r => r.isMe);
+        if (myExisting) myExisting.score = Math.max(myExisting.score, bestScore);
+        else if (bestScore > 0) board.push({ name: 'YOU (PILOT)', score: bestScore, isMe: true });
+
+        board.sort((a, b) => b.score - a.score);
+        return board.slice(0, 8);
+      }
+
+      function updateLeaderboardUI() {
+        const board = getLeaderboard();
+        rankListBox.innerHTML = '';
+        board.forEach((item, idx) => {
+          const row = document.createElement('div');
+          row.className = 'rank-item' + (idx === 0 ? ' top-1' : '') + (item.isMe ? ' my-rank' : '');
+          row.innerHTML = `
+            <span class="rank-num">#${idx + 1}</span>
+            <span class="rank-name">${item.name}</span>
+            <span class="rank-score">${item.score}</span>
+          `;
+          rankListBox.appendChild(row);
+        });
+      }
+
+      function calculatePlayerRank(curScore) {
+        const board = getLeaderboard();
+        let rank = board.length + 1;
+        for (let i = 0; i < board.length; i++) {
+          if (curScore >= board[i].score) {
+            rank = i + 1;
+            break;
+          }
+        }
+        return rank;
+      }
+
+      // 20. 입력 이벤트 바인딩
       window.addEventListener('mousedown', function(e) {
-        if (e.target && (e.target.tagName === 'BUTTON' || e.target.closest('button'))) return;
+        if (e.target && (e.target.tagName === 'BUTTON' || e.target.closest('button') || e.target.closest('.hud-badge'))) return;
         handleAction();
       });
 
       window.addEventListener('touchstart', function(e) {
-        if (e.target && (e.target.tagName === 'BUTTON' || e.target.closest('button'))) return;
+        if (e.target && (e.target.tagName === 'BUTTON' || e.target.closest('button') || e.target.closest('.hud-badge'))) return;
         e.preventDefault();
         handleAction();
       }, { passive: false });
@@ -961,6 +1489,7 @@
         e.stopPropagation();
         resetGame();
         state = STATE.PLAYING;
+        startBgm();
         gameOverScreen.classList.add('hidden');
       });
 
@@ -969,7 +1498,7 @@
         rewardAdBtn.innerText = 'WATCHING AD... (3s)';
         rewardAdBtn.disabled = true;
         setTimeout(function() {
-          rewardAdBtn.innerText = '⚡ REVIVE (RESTORE SIZE)';
+          rewardAdBtn.innerText = '⚡ REVIVE (RESTORE SIZE + SHIELD)';
           rewardAdBtn.disabled = false;
           gameOverScreen.classList.add('hidden');
 
@@ -978,7 +1507,12 @@
           top.depth = INITIAL_SIZE;
           top.x = 0;
           top.z = 0;
+
+          // 부활 보너스: 쉴드 1개 무료 제공!
+          hasShield = true;
+          shieldBadge.style.display = 'flex';
           state = STATE.PLAYING;
+          startBgm();
           spawnBlock();
         }, 3000);
       });
@@ -988,36 +1522,53 @@
         updateLeaderboardUI();
         leaderboardModal.classList.remove('hidden');
       });
-
       gameOverRankBtn.addEventListener('click', function(e) {
         e.stopPropagation();
         updateLeaderboardUI();
         leaderboardModal.classList.remove('hidden');
       });
-
       closeRankBtn.addEventListener('click', function(e) {
         e.stopPropagation();
         leaderboardModal.classList.add('hidden');
       });
 
+      openShopBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        updateShopUI();
+        shopModal.classList.remove('hidden');
+      });
+      closeShopBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        shopModal.classList.add('hidden');
+      });
+
+      // 21. 물리 및 렌더 루프
       function update() {
+        coinRot += 0.05;
+
+        // 블록 이동 & 블록 위 코인 동기화
         if (state === STATE.PLAYING && currentBlock) {
           const b = currentBlock;
           b[b.axis] += b.speed * b.dir;
           const LIMIT = 270;
           if (b[b.axis] > LIMIT) { b[b.axis] = LIMIT; b.dir = -1; }
           else if (b[b.axis] < -LIMIT) { b[b.axis] = -LIMIT; b.dir = 1; }
+
+          if (currentCoin) {
+            currentCoin.x = b.x;
+            currentCoin.z = b.z;
+          }
         }
 
+        // 파편 추락
         for (let i = fallingPieces.length - 1; i >= 0; i--) {
           const p = fallingPieces[i];
           p.vy += 0.85;
           p.y -= p.vy;
-          if (p.y < cameraY - 450) {
-            fallingPieces.splice(i, 1);
-          }
+          if (p.y < cameraY - 450) fallingPieces.splice(i, 1);
         }
 
+        // 파티클 물리
         for (let i = particles.length - 1; i >= 0; i--) {
           const pt = particles[i];
           pt.x += pt.vx;
@@ -1025,9 +1576,7 @@
           pt.z += pt.vz;
           pt.vy -= 0.35;
           pt.alpha *= pt.life;
-          if (pt.alpha < 0.05) {
-            particles.splice(i, 1);
-          }
+          if (pt.alpha < 0.05) particles.splice(i, 1);
         }
 
         cameraY += (targetCameraY - cameraY) * 0.1;
@@ -1047,17 +1596,28 @@
       function render() {
         ctx.clearRect(0, 0, viewWidth, viewHeight);
 
+        // 1) 고도별 동적 패럴랙스 배경
+        drawParallaxBackground();
+
+        // 2) 고정 스택 렌더링
         for (let i = 0; i < stack.length; i++) {
           const b = stack[i];
           const isTop = (i === stack.length - 1);
-          drawBlock(b.x, b.y, b.z, b.width, b.depth, BLOCK_HEIGHT, b.hue, 1.0, isTop && combo >= 3);
+          drawBlock(b, 1.0, isTop && combo >= 3);
         }
 
+        // 3) 추락 파편 렌더링
         for (let i = 0; i < fallingPieces.length; i++) {
           const p = fallingPieces[i];
-          drawBlock(p.x, p.y, p.z, p.width, p.depth, BLOCK_HEIGHT, p.hue, 0.85);
+          drawBlock(p, 0.85);
         }
 
+        // 4) 블록 위 코인 렌더링
+        if (currentCoin && currentBlock) {
+          drawCoin(currentCoin);
+        }
+
+        // 5) 파티클 렌더링
         for (let i = 0; i < particles.length; i++) {
           const pt = particles[i];
           const scr = project(pt.x, pt.y, pt.z);
@@ -1067,9 +1627,9 @@
           ctx.fill();
         }
 
+        // 6) 현재 이동 중인 블록 렌더링
         if (currentBlock) {
-          const c = currentBlock;
-          drawBlock(c.x, c.y, c.z, c.width, c.depth, BLOCK_HEIGHT, c.hue, 1.0, combo >= 3);
+          drawBlock(currentBlock, 1.0, combo >= 3);
         }
       }
 

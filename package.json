@@ -1,10 +1,10 @@
 ﻿{
   "name": "neon-stack-game",
-  "version": "1.0.0",
-  "description": "Neon Stack: Cyber Tower - HTML5 & Capacitor Mobile Game",
+  "version": "2.0.0",
+  "description": "Neon Stack: Cyber Tower V2 - HTML5 & Capacitor Mobile Game",
   "main": "index.html",
   "scripts": {
-    "build": "powershell -Command \"Copy-Item index.html www/index.html -Force\"",
+    "build": "node -e \"require('fs').copyFileSync('index.html', 'www/index.html')\"",
     "sync": "npm run build && npx cap sync android",
     "open:android": "npx cap open android"
   },
