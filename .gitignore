@@ -1,0 +1,17 @@
+﻿# Node modules
+node_modules/
+package-lock.json
+
+# Mobile & Capacitor build
+android/
+ios/
+dist/
+build/
+.gradle/
+
+# OS & Editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.log
