@@ -28,6 +28,7 @@ body {
   background: #090614;
   box-shadow: 0 0 50px rgba(184, 41, 255, 0.15), 0 0 100px rgba(0, 240, 255, 0.1);
   overflow: hidden;
+  cursor: pointer;
 }
 
 #gameCanvas {
@@ -122,11 +123,21 @@ body {
   background: rgba(8, 4, 18, 0.85);
   backdrop-filter: blur(8px);
   z-index: 20;
-  transition: opacity 0.3s ease;
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+.overlay * {
+  pointer-events: none; /* 내부 텍스트가 클릭 가로채지 못하도록 설정 */
+}
+
+.overlay button {
+  pointer-events: auto; /* 버튼만 클릭 가능 */
 }
 
 .hidden {
   display: none !important;
+  pointer-events: none !important;
 }
 
 /* 시작 화면 */
@@ -161,7 +172,6 @@ body {
   flex-direction: column;
   align-items: center;
   gap: 15px;
-  cursor: pointer;
 }
 
 .pulse-circle {
