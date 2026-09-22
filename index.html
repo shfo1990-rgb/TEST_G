@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>NEON STACK: CYBER TOWER</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- 게임 화면 컨테이너 (모바일 뷰포트 고정) -->
+  <div id="game-container">
+    <canvas id="gameCanvas"></canvas>
+
+    <!-- 상단 HUD (점수 및 콤보) -->
+    <div id="hud">
+      <div id="score-box">
+        <span class="hud-label">SCORE</span>
+        <span id="score">0</span>
+      </div>
+      <div id="combo-box" class="hidden">
+        <span id="combo-text">PERFECT!</span>
+        <span id="combo-count">x1</span>
+      </div>
+    </div>
+
+    <!-- 시작 화면 오버레이 -->
+    <div id="start-screen" class="overlay">
+      <h1 class="glitch-title">NEON<br><span class="highlight">STACK</span></h1>
+      <p class="subtitle">CYBER TOWER 2077</p>
+      <div class="tap-guide">
+        <div class="pulse-circle"></div>
+        <span>화면을 탭하여 시작</span>
+      </div>
+      <div class="best-score-badge">BEST: <span id="start-best-score">0</span></div>
+    </div>
+
+    <!-- 게임 오버 화면 오버레이 -->
+    <div id="game-over-screen" class="overlay hidden">
+      <h2 class="game-over-title">SYSTEM COLLAPSE</h2>
+      <div class="result-box">
+        <div class="result-row">
+          <span>최종 점수</span>
+          <span id="final-score" class="result-val">0</span>
+        </div>
+        <div class="result-row">
+          <span>최고 점수</span>
+          <span id="final-best" class="result-val highlight">0</span>
+        </div>
+      </div>
+
+      <!-- 광고 보상 부활 버튼 (시뮬레이션) -->
+      <button id="reward-ad-btn" class="glow-btn reward">
+        <span class="btn-icon">⚡</span>
+        <span class="btn-text">보상 광고 보고 부활 (크기 복구)</span>
+      </button>
+
+      <button id="restart-btn" class="glow-btn">
+        <span>다시 시작</span>
+      </button>
+    </div>
+  </div>
+
+  <script src="game.js"></script>
+</body>
+</html>

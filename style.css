@@ -1,0 +1,281 @@
+﻿* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+}
+
+body {
+  background: radial-gradient(circle at center, #120b24 0%, #06030b 100%);
+  color: #fff;
+  font-family: 'Rajdhani', sans-serif;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+/* 모바일 폰 뷰포트 컨테이너 */
+#game-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  max-width: 480px;
+  max-height: 960px;
+  background: #090614;
+  box-shadow: 0 0 50px rgba(184, 41, 255, 0.15), 0 0 100px rgba(0, 240, 255, 0.1);
+  overflow: hidden;
+}
+
+#gameCanvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* 상단 HUD */
+#hud {
+  position: absolute;
+  top: 40px;
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  pointer-events: none;
+  z-index: 10;
+}
+
+#score-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hud-label {
+  font-family: 'Orbitron', monospace;
+  font-size: 13px;
+  letter-spacing: 4px;
+  color: #00f0ff;
+  text-shadow: 0 0 10px rgba(0, 240, 255, 0.7);
+}
+
+#score {
+  font-family: 'Orbitron', monospace;
+  font-size: 58px;
+  font-weight: 900;
+  line-height: 1;
+  color: #ffffff;
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.8), 0 0 40px rgba(184, 41, 255, 0.6);
+}
+
+#combo-box {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 16px;
+  border-radius: 20px;
+  background: rgba(255, 0, 128, 0.2);
+  border: 1px solid #ff0080;
+  box-shadow: 0 0 15px rgba(255, 0, 128, 0.5);
+  transform: scale(1);
+  transition: transform 0.15s ease;
+}
+
+#combo-box.pop {
+  transform: scale(1.25);
+}
+
+#combo-text {
+  font-family: 'Orbitron', monospace;
+  font-size: 14px;
+  font-weight: 900;
+  color: #ffde59;
+  letter-spacing: 2px;
+}
+
+#combo-count {
+  font-family: 'Orbitron', monospace;
+  font-size: 14px;
+  font-weight: 900;
+  color: #ffffff;
+}
+
+/* 오버레이 공통 */
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: rgba(8, 4, 18, 0.85);
+  backdrop-filter: blur(8px);
+  z-index: 20;
+  transition: opacity 0.3s ease;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* 시작 화면 */
+.glitch-title {
+  font-family: 'Orbitron', monospace;
+  font-size: 46px;
+  font-weight: 900;
+  text-align: center;
+  line-height: 1.05;
+  letter-spacing: 4px;
+  color: #ffffff;
+  text-shadow: 0 0 20px rgba(0, 240, 255, 0.8);
+}
+
+.highlight {
+  color: #00f0ff;
+  text-shadow: 0 0 30px #00f0ff, 0 0 60px #00f0ff;
+}
+
+.subtitle {
+  font-family: 'Orbitron', monospace;
+  font-size: 13px;
+  letter-spacing: 6px;
+  color: #b829ff;
+  margin-top: 10px;
+  text-shadow: 0 0 10px rgba(184, 41, 255, 0.7);
+}
+
+.tap-guide {
+  margin-top: 70px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  cursor: pointer;
+}
+
+.pulse-circle {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 2px solid #00f0ff;
+  box-shadow: 0 0 20px #00f0ff;
+  animation: pulse 1.8s infinite ease-out;
+}
+
+@keyframes pulse {
+  0% { transform: scale(0.8); opacity: 1; }
+  100% { transform: scale(1.6); opacity: 0; }
+}
+
+.tap-guide span {
+  font-size: 16px;
+  letter-spacing: 3px;
+  color: #e0e0e0;
+  animation: blink 1.2s infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+.best-score-badge {
+  position: absolute;
+  bottom: 40px;
+  font-family: 'Orbitron', monospace;
+  font-size: 14px;
+  letter-spacing: 2px;
+  color: #a0a0b8;
+}
+
+/* 게임 오버 화면 */
+.game-over-title {
+  font-family: 'Orbitron', monospace;
+  font-size: 26px;
+  font-weight: 900;
+  letter-spacing: 4px;
+  color: #ff0055;
+  text-shadow: 0 0 25px rgba(255, 0, 85, 0.8);
+  margin-bottom: 25px;
+}
+
+.result-box {
+  width: 78%;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 18px 24px;
+  margin-bottom: 25px;
+}
+
+.result-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  font-size: 17px;
+  color: #ccc;
+}
+
+.result-row:not(:last-child) {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.result-val {
+  font-family: 'Orbitron', monospace;
+  font-size: 24px;
+  font-weight: 900;
+  color: #fff;
+}
+
+/* 글로우 버튼 */
+.glow-btn {
+  width: 78%;
+  padding: 16px 20px;
+  margin-top: 12px;
+  border-radius: 30px;
+  border: none;
+  font-family: 'Orbitron', monospace;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  cursor: pointer;
+  background: linear-gradient(135deg, #00f0ff, #7000ff);
+  color: #fff;
+  box-shadow: 0 0 25px rgba(0, 240, 255, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  transition: transform 0.1s, box-shadow 0.2s;
+}
+
+.glow-btn:active {
+  transform: scale(0.96);
+}
+
+.glow-btn.reward {
+  background: linear-gradient(135deg, #ff0080, #ffde59);
+  box-shadow: 0 0 30px rgba(255, 0, 128, 0.6);
+  animation: rewardPulse 2s infinite ease-in-out;
+}
+
+@keyframes rewardPulse {
+  0%, 100% { box-shadow: 0 0 25px rgba(255, 0, 128, 0.6); }
+  50% { box-shadow: 0 0 45px rgba(255, 222, 89, 0.9); }
+}
+
+.btn-icon {
+  font-size: 20px;
+}
