@@ -1,17 +1,23 @@
-﻿# Node modules
+﻿# Node & Dependencies
 node_modules/
 package-lock.json
 
-# Mobile & Capacitor build
-android/
-ios/
+# Build outputs
 dist/
 build/
+www/
+
+# Android build cache (프로젝트 코드는 보존하고 무거운 빌드 캐시만 제외)
+android/.gradle/
+android/build/
+android/app/build/
+android/.idea/
+android/*.iml
+android/app/*.iml
+android/local.properties
 .gradle/
 
 # OS & Editor
 .DS_Store
 Thumbs.db
-.vscode/
-.idea/
 *.log

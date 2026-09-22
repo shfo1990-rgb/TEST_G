@@ -1,0 +1,6 @@
+﻿{
+  "appId": "com.jin.neonstack",
+  "appName": "Neon Stack",
+  "webDir": "www",
+  "bundledWebRuntime": false
+}

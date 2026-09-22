@@ -1,0 +1,16 @@
+﻿{
+  "name": "neon-stack-game",
+  "version": "1.0.0",
+  "description": "Neon Stack: Cyber Tower - HTML5 & Capacitor Mobile Game",
+  "main": "index.html",
+  "scripts": {
+    "build": "powershell -Command \"Copy-Item index.html www/index.html -Force\"",
+    "sync": "npm run build && npx cap sync android",
+    "open:android": "npx cap open android"
+  },
+  "dependencies": {
+    "@capacitor/android": "^7.0.0",
+    "@capacitor/cli": "^7.0.0",
+    "@capacitor/core": "^7.0.0"
+  }
+}
